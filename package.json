@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "dev": "vue-cli-service serve --open",
+    "prod": "vue-cli-service build --mode=production",
+    "uat": "vue-cli-service build --mode=test",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
