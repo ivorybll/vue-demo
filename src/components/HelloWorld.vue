@@ -34,10 +34,57 @@
 </template>
 
 <script>
+// var proEnv = require('./config/pro.env'); // 生产环境
+// var uatEnv = require('./config/uat.env'); // 测试环境
+// var devEnv = require('./config/dev.env'); // 本地环境
+import proEnv from '../../config/pro.env'
+import uatEnv from '../../config/uat.env'
+import devEnv from '../../config/dev.env'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data () {
+    return {
+
+    }
+  },
+  mounted () {
+
+    this.$post("/api/api/stu_reserve/getStudentDefaultCourse", { slide_id: 1 }).then(res => {
+      console.log(res)
+      const devProxy = ['/weixin', '/api']; //代理
+      const env = process.env.NODE_ENV;
+      let target = ""
+
+      if (env === 'production') {
+
+        target = proEnv.hosturl
+      } else if (env === 'test') {
+        target = uatEnv.hosturl
+      } else {
+        target = devEnv.hosturl
+      }
+
+      let proxyObj = {};
+      devProxy.forEach((value, index) => {
+        proxyObj[value] = {
+          target: target[value],
+          changeOrigin: true,
+          pathRewrite: {
+            [`^${value}`]: value
+          }
+        }
+      })
+      console.log(proxyObj)
+    })
+    this.$post("/weixin/user/unifiedlogin/logout", {}).then(res => {
+      console.log(res)
+
+
+
+    })
   }
 }
 </script>

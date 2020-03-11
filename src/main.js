@@ -3,7 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.config.productionTip = false
+import {
+  post,
+  get
+} from "api"
+Vue.prototype.$post = post
+Vue.prototype.$get = get
+Vue.config.productionTip = false;
 
 new Vue({
   router,

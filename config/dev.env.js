@@ -1,6 +1,9 @@
-<!-- 测试环境 -->
-modules.exports={
-NODE_ENV:'"test"',
-hosturl:'http://test.pxwj.yikeclass.cn',
-hosturl1:'http://test.pxwj_material_api.yikeclass.cn'
+// 测试环境
+module.exports = {
+  NODE_ENV: '"test"',
+  hosturl: {
+    '/api': 'http://test.pxwj.yikeclass.cn',
+    '/weixin': 'http://test.pxwj.yikeclass.cn/'
+  }
+
 }
