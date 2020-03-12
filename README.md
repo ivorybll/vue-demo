@@ -10,13 +10,14 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 测试环境打包
 ```
 npm run build 
-测试环境打包
+
 ```
+### 生产环境打包
 npm run build:prod
-生产环境打包
+
 ### Run your unit tests
 ```
 npm run test:unit
